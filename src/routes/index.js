@@ -1,10 +1,10 @@
 const express = require('express');
-const userRoutes = require('./userRoutes');
+const alunoRoutes = require('./alunoRoutes');
 const { errorHandler } = require('../middlewares/errorHandler');
 
 const router = express.Router();
 
-router.use('/users', userRoutes);
+router.use('/alunos', alunoRoutes);
 router.use(errorHandler);
 
 module.exports = router;
