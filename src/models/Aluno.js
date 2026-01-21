@@ -2,29 +2,40 @@ const mongoose = require("mongoose");
 
 const alunoSchema = new mongoose.Schema(
   {
-    name: {
+    nome: {
       type: String,
       required: true,
       trim: true,
       unique: true,
     },
-    password: {
+    senha: {
       type: String,
       required: true,
+    },
+    tipo: {
+      type: String,
+      enum: ['admim', 'aluno'],
+      default: 'aluno'
     },
     status: {
       type: Boolean,
     },
-    pacote: {
-      type: String,
-      enum: ['Avulso', '5 Aulas', '10 Aulas', 'Mensal', 'Dois Meses'],
-      default: 'Avulso'
-    },
-    dataCompra: {
-      type: Date,
-    },
-    dataFinalPacote: {
-      type: Date,
+    pacotes: {
+      type: [
+        {
+          nomePacote: {
+            type: String,
+            enum: ['Avulso', '5 Aulas', '10 Aulas', 'Mensal', 'Dois Meses'],
+          },
+          dataCompra: {
+            type: Date,
+          },
+          dataFinalPacote: {
+            type: Date,
+          },
+        },
+      ],
+      default: [],
     },
     recorrenciaCancelamentos: {
       type: Number,

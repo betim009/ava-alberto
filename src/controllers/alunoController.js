@@ -18,7 +18,17 @@ async function postAluno(req, res, next) {
   }
 }
 
+async function postLogin(req, res, next) {
+  try {
+    const aluno = await alunoService.loginAluno(req.body);
+    res.json(aluno);
+  } catch (err) {
+    next(err);
+  }
+}
+
 module.exports = {
   getAlunos,
   postAluno,
+  postLogin,
 };
