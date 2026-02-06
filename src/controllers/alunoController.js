@@ -3,7 +3,13 @@ const alunoService = require('../services/alunoService');
 async function getAlunos(_req, res, next) {
   try {
     const alunos = await alunoService.listAlunos();
-    res.json(alunos);
+    res.json(
+      {
+        "resultado": {
+          "data": alunos
+        }
+      }
+    );
   } catch (err) {
     next(err);
   }

@@ -20,23 +20,6 @@ const alunoSchema = new mongoose.Schema(
     status: {
       type: Boolean,
     },
-    pacotes: {
-      type: [
-        {
-          nomePacote: {
-            type: String,
-            enum: ['Avulso', '5 Aulas', '10 Aulas', 'Mensal', 'Dois Meses'],
-          },
-          dataCompra: {
-            type: Date,
-          },
-          dataFinalPacote: {
-            type: Date,
-          },
-        },
-      ],
-      default: [],
-    },
     recorrenciaCancelamentos: {
       type: Number,
       default: 0,
@@ -48,3 +31,4 @@ const alunoSchema = new mongoose.Schema(
 );
 
 module.exports = mongoose.model("Aluno", alunoSchema);
+
